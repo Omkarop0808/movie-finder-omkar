@@ -47,6 +47,10 @@ If the TMDB API fails or there is a network issue, the application gracefully fa
 The application features a deeply customized "Midnight Cinema" aesthetic, highlighting movie artwork with borderless cards and rich, immersive detail views.
 ![Movie Detail/Card View](./public/card.png)
 
+### 5. Dynamic Search
+Users can seamlessly search the TMDB database with dynamic header updates and instant results.
+![Search Functionality](./public/image.png)
+
 ## Running Locally
 
 1. **Install dependencies**:
