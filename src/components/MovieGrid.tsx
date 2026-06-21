@@ -26,10 +26,11 @@ export function MovieGrid({ movies }: MovieGridProps) {
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <AnimatePresence>
-          {movies.map((movie) => (
+          {movies.map((movie, index) => (
             <MovieCard 
               key={movie.id} 
               movie={movie} 
+              index={index}
               onClick={(m) => setSelectedMovie(m)} 
             />
           ))}

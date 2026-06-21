@@ -16,12 +16,13 @@ export default async function Home({ searchParams }: PageProps) {
 
   return (
     <div className="flex flex-col gap-8">
-      <section className="flex flex-col items-center text-center space-y-4 py-8 md:py-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
-          Find Your Next <span className="text-primary">Favorite Movie</span>
-        </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl">
-          Explore trending titles, search for classics, and save your top picks.
+      <section className="flex flex-col items-start space-y-4 py-8 md:py-12 border-b-2 border-border mb-8">
+        <h2 className="text-xl md:text-2xl font-bold tracking-tight text-foreground uppercase underline decoration-2 underline-offset-4">
+          EXT. MOVIE FINDER - CONTINUOUS
+        </h2>
+        <p className="text-base text-foreground max-w-3xl leading-relaxed">
+          A vast database of motion pictures waits to be discovered. 
+          The USER explores trending titles, searches for classics, and saves their top picks.
         </p>
       </section>
 

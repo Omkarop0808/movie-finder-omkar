@@ -15,25 +15,28 @@ export default function FavoritesPage() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 py-4 border-b border-border/50">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight text-foreground">Your Favorites</h1>
-          <p className="text-muted-foreground mt-1">Movies you've saved for later.</p>
-        </div>
-      </div>
+      <section className="flex flex-col items-start space-y-4 py-8 md:py-12 border-b-2 border-border mb-8">
+        <h2 className="text-xl md:text-2xl font-bold tracking-tight text-foreground uppercase underline decoration-2 underline-offset-4">
+          INT. FAVORITES VAULT - DAY
+        </h2>
+        <p className="text-base text-foreground max-w-3xl leading-relaxed">
+          The USER opens their private collection of saved motion pictures.
+        </p>
+      </section>
 
       {favorites.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-24 text-center border border-dashed border-border rounded-xl bg-card/30">
-          <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
-            <Film className="w-8 h-8 text-muted-foreground" />
-          </div>
-          <h3 className="text-xl font-semibold text-foreground mb-2">No favorites yet</h3>
-          <p className="text-muted-foreground mb-6">You haven't added any movies to your favorites.</p>
+        <div className="flex flex-col items-start justify-center py-24 text-left border-l-4 border-border pl-6">
+          <h3 className="text-xl font-bold text-foreground mb-2 uppercase">
+            [VAULT EMPTY]
+          </h3>
+          <p className="text-muted-foreground mb-6">
+            NO FAVORITES HAVE BEEN LOGGED.
+          </p>
           <Link 
             href="/"
-            className="px-6 py-2 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors"
+            className="text-primary font-bold uppercase underline decoration-2 underline-offset-4 hover:text-primary/80 transition-colors"
           >
-            Discover Movies
+            [RETURN TO SEARCH]
           </Link>
         </div>
       ) : (

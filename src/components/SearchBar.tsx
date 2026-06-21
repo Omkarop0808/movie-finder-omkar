@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Search, X } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useDebounce } from "@/hooks/useDebounce";
 
 export function SearchBar() {
   const router = useRouter();
@@ -10,52 +11,49 @@ export function SearchBar() {
   const initialQuery = searchParams.get("q") || "";
   
   const [query, setQuery] = useState(initialQuery);
-  const debounceRef = useRef<NodeJS.Timeout | null>(null);
+  const debouncedQuery = useDebounce(query, 300);
+  const [isInitialRender, setIsInitialRender] = useState(true);
 
+  // Sync external URL changes back to local state
   useEffect(() => {
-    // If external URL changes, update local state
     setQuery(searchParams.get("q") || "");
   }, [searchParams]);
 
-  const handleSearch = (value: string) => {
-    setQuery(value);
-
-    if (debounceRef.current) {
-      clearTimeout(debounceRef.current);
+  // Handle debounced search routing
+  useEffect(() => {
+    if (isInitialRender) {
+      setIsInitialRender(false);
+      return;
     }
 
-    debounceRef.current = setTimeout(() => {
-      if (value.trim()) {
-        router.push(`/?q=${encodeURIComponent(value.trim())}&page=1`);
-      } else {
-        router.push(`/`);
-      }
-    }, 300);
-  };
+    if (debouncedQuery.trim()) {
+      router.push(`/?q=${encodeURIComponent(debouncedQuery.trim())}&page=1`);
+    } else if (debouncedQuery === "") {
+      router.push(`/`);
+    }
+  }, [debouncedQuery, router]);
 
   const clearSearch = () => {
     setQuery("");
-    if (debounceRef.current) clearTimeout(debounceRef.current);
-    router.push(`/`);
   };
 
   return (
-    <div className="relative w-full max-w-xl mx-auto">
-      <div className="relative flex items-center">
-        <Search className="absolute left-4 w-5 h-5 text-muted-foreground" />
+    <div className="w-full max-w-3xl mx-auto mb-12">
+      <div className="relative flex items-end">
+        <span className="text-muted-foreground mr-4 font-bold">QUERY:</span>
         <input
           type="text"
           value={query}
-          onChange={(e) => handleSearch(e.target.value)}
-          placeholder="Search movies by title..."
-          className="w-full h-12 pl-12 pr-12 bg-card border border-border rounded-full text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all shadow-sm"
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="[ENTER MOVIE TITLE...]"
+          className="w-full pb-2 bg-transparent border-b-2 border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-all font-mono uppercase tracking-widest"
         />
         {query && (
           <button
             onClick={clearSearch}
-            className="absolute right-4 text-muted-foreground hover:text-foreground transition-colors"
+            className="absolute right-0 bottom-2 text-primary font-bold hover:text-primary/80 transition-colors uppercase"
           >
-            <X className="w-5 h-5" />
+            [X]
           </button>
         )}
       </div>
