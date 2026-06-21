@@ -27,6 +27,22 @@ TMDB_API_KEY="eyJhb...your_token_here"
 TMDB_API_KEY="your_api_key_here"
 ```
 
+## Application States & UI Showcases
+
+Here are some previews of the different application states, ensuring a smooth and responsive user experience across devices:
+
+### 1. Mobile Responsive View
+The application is fully responsive. The "Midnight Cinema" design adapts perfectly to smaller screens, keeping the search and movie grid highly legible.
+![Mobile View](./public/mobile.png)
+
+### 2. Loading States
+During data fetching or pagination, the application uses skeleton loaders to avoid layout shifts and keep the UI feeling fast and responsive.
+![Loading State](./public/loading.png)
+
+### 3. Error Handling
+If the TMDB API fails or there is a network issue, the application gracefully falls back to an error state with an option to retry, preventing the app from crashing.
+![Error State](./public/error.png)
+
 ## Running Locally
 
 1. **Install dependencies**:

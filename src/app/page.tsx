@@ -32,7 +32,20 @@ export default async function Home({ searchParams }: PageProps) {
 
       <section className="mt-4">
         <Suspense key={`${query}-${page}`} fallback={<LoadingSpinner />}>
-          <MovieList page={page > 0 ? page : 1} query={query} />
+          {/* Movie Grid Section */}
+          <section className="flex-grow w-full max-w-[1400px] mx-auto px-4 md:px-8">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-2xl md:text-3xl font-semibold text-white tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>
+                {query ? `Search Results for "${query}"` : "Trending Movies"}
+              </h2>
+              {!query && (
+                <div className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+                  Updated Daily
+                </div>
+              )}
+            </div>
+            <MovieList page={page > 0 ? page : 1} query={query} />
+          </section>
         </Suspense>
       </section>
     </div>
