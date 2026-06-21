@@ -43,6 +43,10 @@ During data fetching or pagination, the application uses skeleton loaders to avo
 If the TMDB API fails or there is a network issue, the application gracefully falls back to an error state with an option to retry, preventing the app from crashing.
 ![Error State](./public/error.png)
 
+### 4. Premium Gallery Design
+The application features a deeply customized "Midnight Cinema" aesthetic, highlighting movie artwork with borderless cards and rich, immersive detail views.
+![Movie Detail/Card View](./public/card.png)
+
 ## Running Locally
 
 1. **Install dependencies**:
