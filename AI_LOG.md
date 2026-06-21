@@ -9,7 +9,7 @@
 - TMDB API for fetching live movie data
 
 ## Best Prompts
--**Prompt:**Build a Movie Discovery App in Next.js using the TMDB API. Read every requirement below carefully and follow it exactly — do not deviate or simplify.
+- **Prompt:**Build a Movie Discovery App in Next.js using the TMDB API. Read every requirement below carefully and follow it exactly — do not deviate or simplify.
 
 CORE FEATURES:
 Browse page showing a responsive grid of movies. Each movie card shows poster image, title, release year, and rating (out of 10, from TMDB vote_average).
